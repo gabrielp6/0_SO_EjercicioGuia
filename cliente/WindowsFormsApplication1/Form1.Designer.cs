@@ -32,10 +32,12 @@
             this.nombre = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.alturaBox = new System.Windows.Forms.TextBox();
+            this.altura = new System.Windows.Forms.RadioButton();
             this.Longitud = new System.Windows.Forms.RadioButton();
             this.Bonito = new System.Windows.Forms.RadioButton();
-            this.altura = new System.Windows.Forms.RadioButton();
-            this.alturaBox = new System.Windows.Forms.TextBox();
+            this.desconectar = new System.Windows.Forms.Button();
+            this.conectar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +85,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
             // 
+            // alturaBox
+            // 
+            this.alturaBox.Location = new System.Drawing.Point(17, 114);
+            this.alturaBox.Name = "alturaBox";
+            this.alturaBox.Size = new System.Drawing.Size(77, 20);
+            this.alturaBox.TabIndex = 10;
+            // 
+            // altura
+            // 
+            this.altura.AutoSize = true;
+            this.altura.Location = new System.Drawing.Point(115, 114);
+            this.altura.Name = "altura";
+            this.altura.Size = new System.Drawing.Size(98, 17);
+            this.altura.TabIndex = 9;
+            this.altura.TabStop = true;
+            this.altura.Text = "Dime si soy alto";
+            this.altura.UseVisualStyleBackColor = true;
+            // 
             // Longitud
             // 
             this.Longitud.AutoSize = true;
@@ -105,29 +125,33 @@
             this.Bonito.Text = "Dime si mi nombre es bonito";
             this.Bonito.UseVisualStyleBackColor = true;
             // 
-            // altura
+            // desconectar
             // 
-            this.altura.AutoSize = true;
-            this.altura.Location = new System.Drawing.Point(115, 114);
-            this.altura.Name = "altura";
-            this.altura.Size = new System.Drawing.Size(98, 17);
-            this.altura.TabIndex = 9;
-            this.altura.TabStop = true;
-            this.altura.Text = "Dime si soy alto";
-            this.altura.UseVisualStyleBackColor = true;
+            this.desconectar.Location = new System.Drawing.Point(137, 421);
+            this.desconectar.Name = "desconectar";
+            this.desconectar.Size = new System.Drawing.Size(105, 23);
+            this.desconectar.TabIndex = 7;
+            this.desconectar.Text = "Desconectar";
+            this.desconectar.UseVisualStyleBackColor = true;
+            this.desconectar.Click += new System.EventHandler(this.desconectar_Click);
             // 
-            // alturaBox
+            // conectar
             // 
-            this.alturaBox.Location = new System.Drawing.Point(17, 114);
-            this.alturaBox.Name = "alturaBox";
-            this.alturaBox.Size = new System.Drawing.Size(77, 20);
-            this.alturaBox.TabIndex = 10;
+            this.conectar.Location = new System.Drawing.Point(137, 65);
+            this.conectar.Name = "conectar";
+            this.conectar.Size = new System.Drawing.Size(75, 23);
+            this.conectar.TabIndex = 8;
+            this.conectar.Text = "Conectar";
+            this.conectar.UseVisualStyleBackColor = true;
+            this.conectar.Click += new System.EventHandler(this.conectar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 562);
+            this.Controls.Add(this.conectar);
+            this.Controls.Add(this.desconectar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -148,6 +172,8 @@
         private System.Windows.Forms.RadioButton Bonito;
         private System.Windows.Forms.TextBox alturaBox;
         private System.Windows.Forms.RadioButton altura;
+        private System.Windows.Forms.Button desconectar;
+        private System.Windows.Forms.Button conectar;
     }
 }
 

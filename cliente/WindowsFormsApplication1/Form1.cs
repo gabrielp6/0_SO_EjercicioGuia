@@ -29,20 +29,6 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-            //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9020);
-
-
-            //Creamos el socket 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);//Intentamos conectar el socket
-                this.BackColor = Color.Green;
-             //   MessageBox.Show("Conectado");
-
                 if (Longitud.Checked)
                 {
                     string mensaje = "1/" + nombre.Text;
@@ -88,36 +74,51 @@ namespace WindowsFormsApplication1
                     server.Receive(msg2);
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
 
-
-
                     MessageBox.Show(mensaje);
                 }
-                // Se terminó el servicio. 
+            }
+
+
+
+        private void desconectar_Click(object sender, EventArgs e)
+        {
+                    //Mensaje de desconexion
+            string mensaje = "0/";
+            
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
                 // Nos desconectamos
                 this.BackColor = Color.Gray;
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
+        }
 
 
+        private void conectar_Click(object sender, EventArgs e)
+        {
+                    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+            //al que deseamos conectarnos
+            IPAddress direc = IPAddress.Parse("192.168.56.102");
+            IPEndPoint ipep = new IPEndPoint(direc, 9020);
 
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+                this.BackColor = Color.Green;
+                MessageBox.Show("Conectado");
             }
+
+    
             catch (SocketException ex)
             {
                 //Si hay excepcion imprimimos error y salimos del programa con return 
                 MessageBox.Show("No he podido conectar con el servidor");
                 return;
-            } 
-
-          
-
-    
-          
-          
-
+            }
         }
-
-   
-
-     
     }
 }
